@@ -1,0 +1,18 @@
+[project]
+name = "WireLoadd"
+version = "0.1.0"
+authors = [
+    { name="odjacobs", email="98474660+odjacobs@users.noreply.github.com"}
+]
+description = "Neat little file downloader."
+readme = "README.md"
+license = { file="LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/odjacobs/wireloadd"
+"Bug Tracker" = "https://github.com/odjacobs/wireloadd/issues"
