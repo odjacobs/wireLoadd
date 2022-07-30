@@ -16,7 +16,6 @@
 
 from multiprocessing import Pool
 from os import path, mkdir
-import time
 
 # Download individual files
 def getContent(args):
@@ -24,15 +23,13 @@ def getContent(args):
 
     url, filename = args[0], args[1]
 
-    t0 = time.time()
     try:
         r = requests.get(url)
 
         with open(filename, "wb") as f:
             f.write(r.content)
-        return (url, time.time() - t0)
     except Exception:
-        return f"Failed to download {url}"
+        print(f"Failed to download {url}")
 
 
 # The brains of the operation
@@ -47,6 +44,4 @@ def download(urls, savePath="Downloads", threads=2):
     fileNames = []
     for i, url in enumerate(urls):
         fileNames.append(f"{savePath}/{i}.{url.split('.')[-1]}")
-    p = Pool(threads)
-    for i in p.imap_unordered(getContent, zip(urls, fileNames)):
-        print(i)
+    Pool(threads).imap_unordered(getContent, zip(urls, fileNames))
